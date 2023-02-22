@@ -1,66 +1,76 @@
 import java.util.*;
 import java.io.*;
-import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-class prnext extends JFrame implements ActionListener
-{JTextField jtprv;JTextField jtnext;JTextField jtcurr;JLabel jlcurr,jlprv,jlnext;
-JButton jb1,jb2;
-	prnext()
-	{	setLayout(null);
-		jlcurr=new JLabel("Enter the number");
-		jlcurr.setBounds(200,200,150,30);
-		jtcurr=new JTextField();
-		jtcurr.setBounds(350,200,50,30);
-		add(jtcurr);
-		add(jlcurr);
-		jtnext=new JTextField();
-		add(jtnext);
-		jlnext=new JLabel("Next Number");
-		add(jlnext);
-		jlnext.setBounds(200,300,150,30);
-		jtnext.setBounds(350,300,50,30);
-		jtprv=new JTextField();
-		add(jtprv);
-		jlprv=new JLabel("Previous Number");
-		jlprv.setBounds(200,400,150,30);
-		jtprv.setBounds(350,400,50,30);
-		add(jlprv);
+import javax.swing.*;
+
+
+class Log extends JFrame implements ActionListener
+{JLabel jl1,jl2,res;
+JTextField jt1;
+JPasswordField jt2;
+JButton jb,reset;
+	Log()
+	{
+		jl1=new JLabel("USER NAME");
+		jt1=new JTextField();
+		jl2=new JLabel("PASSWORD");
+		jt2=new JPasswordField();
+		jb=new JButton("LOGIN");
+		res=new JLabel();
+		jb.addActionListener(this);
 		setVisible(true);
+		setLayout(null);
 		setSize(600,600);
-		jb1=new JButton("OK");
-		add(jb1);
-		jb2=new JButton("CANCEL");
-		add(jb2);
-		jb1.setBounds(200,500,100,50);
-		jb1.addActionListener(this);
-		jb2.setBounds(300,500,100,50);
-		jb2.addActionListener(this);
-	}
-	public void  actionPerformed(ActionEvent a)
-	{	
-	if(a.getSource()==jb1)
+		jl1.setBounds(200, 200, 100, 50);
+		jt1.setBounds(300,200,150,50);
+		jl2.setBounds(200,300,100,50);
+		jt2.setBounds(300,300,150,50);
+		jb.setBounds(250,400,75,50);
+		res.setBounds(250,100,200,50);
+		reset=new JButton("RESET");
+		reset.setBounds(350,400,75,50);
+		add(jl1);
+		add(jl2);
+		add(jt1);
+		add(jt2);
+		add(jb);
+		add(res);
+		add(reset);
+		reset.addActionListener(this);
+		jb.addActionListener(this);
+		}
+	public void actionPerformed(ActionEvent e)
 	{
-		String s=jtcurr.getText();
-		int n=Integer.parseInt(s);
-		int next=n+1;
-		int prev=n-1;
-		jtnext.setText(String.valueOf(next));
-		jtprv.setText(String.valueOf(prev));
-	}	else
-	{
-		jtprv.setText("");
-		jtnext.setText("");
-		jtcurr.setText("");
-	}
+		if(e.getSource()==jb)
+		{
+			if((jt1.getText().equals("Aswin"))&&(jt2.getText().equals("123")))
+					res.setText("Valid Entry");
+			else
+				res.setText("Invalid Credentials");
 			
+		}
+		else
+		{	res.setText("Re-enter");
+			jt1.setText("");
+			jt2.setText("");
+		}
+	
+		
 	}
 }
-public class prevnext {
+public class LoginPage {
+
+	public LoginPage() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		prnext ob=new prnext();
+		Log l=new Log();
+		
+
 	}
 
 }
+
